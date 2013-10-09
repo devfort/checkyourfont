@@ -47,7 +47,7 @@ class Font(TemplateView):
                 max_size = int_(value)
             elif name == 'sizes.min':
                 min_size = int_(value)
-            elif name == 'sizes.highlight':
+            elif name == 'sizes.key':
                 key_sizes = filter(
                     lambda x: x is not None,
                     map(int_, value.split(','))
