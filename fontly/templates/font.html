@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}Displaying {{ font }}{% endblock %}
+
+{% block head-css %}
+<style>
+body {
+  font-family: {{ font }};
+}
+ol li { list-style: none; }
+</style>
+{% endblock %}
+
+{% block content %}
+  <h1>{{ font }}</h1>
+
+  <ol>
+    {% for size in sizes reversed %}
+      <li{% if size.is_key %} class='key'{% endif %} style='font-size: {{ size.pixels }}px'><em>{{ size.pixels }}px<i> looks like </i></em>AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890.,;()&pound;&amp;&sect;&ldquo;&rdquo;&lsquo;&rsquo;?!</li>
+    {% endfor %}
+  </ol>
+{% endblock %}
