@@ -33,6 +33,18 @@ class Font(TemplateView):
             return ret
 
         SIZE = namedtuple('SIZE', ('pixels', 'is_key'))
+        SOURCE = namedtuple('SOURCE', ('url', 'format'))
+
+        class WebFont(object):
+            def __init__(self, name, config):
+                self.name = name
+                # config is a string, worry about this later
+                self.config = config
+
+            def sources(self):
+                return [
+                    SOURCE(url=self.config, format='woff'),
+                ]
 
         bits = self.kwargs['params'].split(';')
         font, params = bits[0], bits[1:]
@@ -61,7 +73,7 @@ class Font(TemplateView):
                 )
             elif name.startswith('font.'):
                 _, font = name.split('.', 2)
-                kwargs['webfonts'][font] = value
+                kwargs['webfonts'][font] = WebFont(font, value)
             elif name == 'text':
                 kwargs['text'] = """Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."""
 

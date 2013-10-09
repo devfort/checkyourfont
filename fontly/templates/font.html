@@ -5,6 +5,16 @@
 {% block head-css %}
 <style>
 {# FIXME: webfonts #}
+{% for webfont in webfonts.values %}
+@font-face {
+  font-family: {{ webfont.name }};
+  src:
+{% for source in webfont.sources %}
+url('{{ source.url }}') format('{{ source.format }}'){% if forloop.last %};{% else %},{% endif %}
+{% endfor %}
+}
+{{ webfont.css }}
+{% endfor %}
 body {
   font-family: {{ font }};
 }
