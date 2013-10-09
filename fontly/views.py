@@ -65,7 +65,7 @@ class Font(TemplateView):
 
         if key_sizes is None:
             # FIXME guess smarter
-            key_sizes = sizes
+            key_sizes = [ 12, 14, 18, 24 ]
         key_sizes = set(key_sizes)
 
         sizes_ = []
