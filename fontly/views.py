@@ -7,7 +7,7 @@ class Home(TemplateView):
     template_name = 'home.html'
 
     def render_to_response(self, context, **response_kwargs):
-        response = super(Font, self).render_to_response(context, **response_kwargs)
+        response = super(Home, self).render_to_response(context, **response_kwargs)
         if not settings.DEBUG:
             response['Cache-Control'] = "max-age=86400"
         return response
