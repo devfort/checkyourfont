@@ -6,13 +6,17 @@
 {% block font-head-css %}
   {# FIXME: webfonts #}
   {% for webfont in webfonts.values %}
-    @font-face {
-      font-family: '{{ webfont.name|cssescape }}';
-      src:
-        {% for source in webfont.sources %}
-          url('{{ source.url|cssescape }}') format('{{ source.format|cssescape }}'){% if forloop.last %};{% else %},{% endif %}
-        {% endfor %}
-    }
+    {% if webfont.google %}
+      @import url(https://fonts.googleapis.com/css?family={{ webfont.name|googleencode }}:{{ webfont.sizes|googleencode }});
+    {% else %}
+      @font-face {
+        font-family: '{{ webfont.name|cssescape }}';
+        src:
+          {% for source in webfont.sources %}
+            url('{{ source.url|cssescape }}') format('{{ source.format|cssescape }}'){% if forloop.last %};{% else %},{% endif %}
+          {% endfor %}
+      }
+    {% endif %}
   {% endfor %}
   #preview {
     font-family: '{{font|cssescape}}';

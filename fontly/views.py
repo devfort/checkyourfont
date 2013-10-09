@@ -33,13 +33,19 @@ class Font(TemplateView):
             return ret
 
         SIZE = namedtuple('SIZE', ('pixels', 'is_key'))
-        SOURCE = namedtuple('SOURCE', ('url', 'format'))
+        SOURCE = namedtuple('SOURCE', ('url', 'format', 'google', 'args'))
 
         class WebFont(object):
             def __init__(self, name, config):
                 self.name = name
                 # config is a string, worry about this later
                 self.config = config
+
+            def google(self):
+                return self.config.startswith('google/')
+
+            def sizes(self):
+                return self.config[7:]
 
             def sources(self):
                 return [
