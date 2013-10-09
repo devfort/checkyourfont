@@ -52,8 +52,6 @@ class Font(TemplateView):
         kwargs['webfonts'] = {}
         sizes = None
         key_sizes = None
-        #kwargs['sizes'] = (8,9,10,11,12,14,16,18,20,22,24,26,28,30,32)
-        #kwargs['key_sizes'] = (8,12,14,16,24)
         min_size = None
         max_size = None
         for name, value in (param_(p) for p in params):
