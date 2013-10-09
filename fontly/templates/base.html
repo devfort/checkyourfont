@@ -70,11 +70,19 @@
     min-height: 20px;
     padding: 0 0 0 60px;
     vertical-align: baseline;
-    white-space: nowrap;
+    overflow: hidden;
   }
   #preview li.key em {
     background: red;
     color: white;
+  }
+  #preview li span {
+    white-space: nowrap;
+  }
+  #preview li p {
+    line-height: 1.4;
+    margin: 0;
+    padding: 5px 0;
   }
   
   {% block head-css-fontblocks %}{% endblock %}
