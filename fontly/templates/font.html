@@ -33,7 +33,7 @@
 
   <ol id='preview'>
     {% for size in sizes reversed %}
-      <li{% if size.is_key %} class='key'{% endif %} style='font-size: {{ size.pixels }}px'><em>{{ size.pixels }}px<b> looks like </b></em><span>{% if text %}{{ text|linebreaks }}{% else %}AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890.,;()&pound;&amp;&sect;&ldquo;&rdquo;&lsquo;&rsquo;?!{% endif %}</span></li>
+      <li{% if size.is_key %} class='key'{% endif %} style='font-size: {{ size.pixels }}px'><em>{{ size.pixels }}px<b> looks like </b></em><span>{% if text %}{{ text|linebreaks }}{% else %}AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890.(),&ldquo;&pound;&rdquo;&amp;&lsquo;$&rsquo;&sect;;?!{% endif %}</span></li>
     {% endfor %}
   </ol>
 {% endblock %}
