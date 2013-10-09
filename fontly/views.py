@@ -6,6 +6,10 @@ from django.views.generic import TemplateView
 class Home(TemplateView):
     template_name = 'home.html'
 
+    def get_context_data(self, **kwargs):
+        kwargs['baseurl'] = 'http://checkyourfont.com/'
+        return super(Home, self).get_context_data(**kwargs)
+
     def render_to_response(self, context, **response_kwargs):
         response = super(Home, self).render_to_response(context, **response_kwargs)
         if not settings.DEBUG:

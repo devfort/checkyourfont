@@ -1,9 +1,40 @@
 {% extends "base.html" %}
 
-{% block title %}Check your fonts{% endblock %}
+{% block title %}Check Your Font{% endblock %}
 
 {% block content %}
-  <h1>Check your fonts</h1>
+  <h1>Check Your Font</h1>
 
-  <p>You want to check your fonts, eh?</p>
+  <p>Fonts are ornery beasts, different in different browsers, on different platforms and at different sizes. It's a good idea to check that the family and size you want is legible on all browser-platform combinations you care about; there can be all sorts of problems hiding in the details.</p>
+
+  <h2>Show me!</h2>
+
+  <p>To get started, check out some of these font checks.</p>
+
+  <ul>
+    <li><a href='/Helvetica'>Helvetica at default font sizes</a></li>
+    <li><a href='/Courier;sizes=14,16,18,20'>Courier at 14, 16, 18 and 20 pixels</a></li>
+    <li><a href='/Verdana;sizes=20,30;sizes.key=20'>Verdana and 20 and 30 pixels, highlighting the 20 pixel version</a></li>
+    <li><a href='/Georgia;text'>Georgia showing <em>lorem ipsum</em> instead of an alphabetic display</a></li>
+    <li><a href='/Arvo;font.Arvo=google/700'>Arvo from <em>Google Fonts</em></a></li>
+  </ul>
+
+  <h2>How do I use it?</h2>
+
+  <p><em>Check Your Font</em> allows you to construct a URL to control a number of aspects of font selection. You start with the font stack, so if you want to use <em>MyFont</em> use <a href='/MyFont'><code>{{ baseurl }}MyFont</code></a>. Typically you won't use more than a single family, although you can use this with something like <a href='http://browserstack.com/'>Browser Stack</a> to check a font stack across multiple browsers, using a URL such as <a href='/MyFont,Fallback,monospace'><code>{{ baseurl }}MyFont,Fallback,monospace</code></a>.</p>
+
+  <p>Everything else you tack on after that, separating different controls using a semicolon (&lsquo;<code>;</code>&rsquo;). Try one or more of the following.</p>
+
+  <ul>
+    <li><code>;sizes=</code> allows you to give a comma-separated list of pixel font sizes, such as <a href='/Courier;sizes=14,16,18,20'><code>{{ baseurl }}Courier;sizes=14,16,18,20</code></a> (the default is every size from 10 pixels to 24 pixels)</li>
+    <li><code>;sizes.key=</code> allows you to set the 'key' font sizes in the same way, such as <a href='/Verdana;sizes=20,30;sizes.key=20'><code>{{ baseurl }}Verdana;sizes=20,30;sizes.key=20</code></a>&mdash;you can use <code>sizes.key</code> without setting <code>sizes</code> too (the default is 12, 14, 18 and 24 pixels)</li>
+    <li><code>;sizes.max=</code> and <code>;sizes.min=</code> is a quick way of setting the sizes to use, such as <a href='/Verdana;sizes.min=20;sizes.max=30'><code>{{ baseurl }}Verdana;sizes.min=20;sizes.max=30</code></a></li>
+    <li><code>;text</code> switches to display <em>lorem ipsum</em> instead of the alphabet, numbers and common punctuation, such as <a href='/Georgia;text'><code>{{ baseurl }}Georgia;text</code></a></li>
+    <li><code>;font.<kbd>font-name</kbd>=<kbd>url</kbd></code> allows you to load in a webfont from a given URL (currently we only support WOFF)</li>
+    <li><code>;font.<kbd>font-name</kbd>=google/<kbd>font-weights</kbd></code> allows you to load in a font from <a href='http://www.google.com/fonts'>Google Fonts</a>, such as <a href='/Arvo;font.Arvo=google/700'><code>{{ baseurl }}Arvo;font.Arvo=google/700</code></a> (<kbd>font-name</kbd> is the <code>font-family</code> name you passed in the font stack; <kbd>font-weights</kbd> is the list of weights you want to pull from Google)</li>
+  </ul>
+
+  <h2>Who is behind this?</h2>
+
+  <p><em>Check Your Font</em> was written by <a href='http://tartarus.org/james/'>James Aylett</a> and <a href='http://marknormanfrancis.com/'>Mark Norman Francis</a> based on a nifty template that <a href='http://markhurrell.com/'>Mark Hurrell</a> showed us at a <a href='http://devfort.com/'>/dev/fort</a>.
 {% endblock %}
