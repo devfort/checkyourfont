@@ -16,6 +16,15 @@ class Font(TemplateView):
             except ValueError:
                 return None
 
+        def param_(kv):
+            bits = kv.split('=', 2)
+            ret = [ bits[0] ]
+            if len(bits) > 1:
+                ret.append(bits[1])
+            else:
+                ret.append(True)
+            return ret
+
         SIZE = namedtuple('SIZE', ('pixels', 'is_key'))
 
         bits = self.kwargs['params'].split(';')
@@ -28,7 +37,7 @@ class Font(TemplateView):
         #kwargs['key_sizes'] = (8,12,14,16,24)
         min_size = None
         max_size = None
-        for name, value in (p.split(',', 2) for p in params):
+        for name, value in (param_(p) for p in params):
             if name == 'sizes':
                 sizes = filter(
                     lambda x: x is not None,
