@@ -87,10 +87,10 @@ class Font(TemplateView):
 
         if sizes is None:
             if min_size is None:
-                min_size = 8
+                min_size = 10
             if max_size is None:
-                max_size = 32
-            sizes = range(min_size, max_size+2, 2)
+                max_size = 24
+            sizes = range(min_size, max_size+1)
 
         if key_sizes is None:
             # FIXME guess smarter
