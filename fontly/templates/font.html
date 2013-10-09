@@ -4,10 +4,20 @@
 
 {% block head-css %}
 <style>
+{# FIXME: webfonts #}
 body {
   font-family: {{ font }};
 }
-ol li { list-style: none; }
+ol {
+  margin: 0;
+  padding: 0;
+}
+li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.key { font-weight: bold; }
 </style>
 {% endblock %}
 
