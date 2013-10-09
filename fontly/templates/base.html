@@ -3,6 +3,8 @@
 
 {% block head-css %}
 <style>
+  {% block head-css-imports %}{% endblock %}
+  
   body {
     color: black;
     background: white;
@@ -46,7 +48,7 @@
     color: white;
   }
   
-  {% block font-head-css %}{% endblock %}
+  {% block head-css-fontblocks %}{% endblock %}
 </style>
 {% endblock %}
 

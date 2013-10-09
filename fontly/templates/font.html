@@ -3,12 +3,17 @@
 
 {% block title %}Displaying {{ font }}{% endblock %}
 
-{% block font-head-css %}
-  {# FIXME: webfonts #}
+{% block head-css-imports %}
   {% for webfont in webfonts.values %}
     {% if webfont.google %}
       @import url(https://fonts.googleapis.com/css?family={{ webfont.name|googleencode }}:{{ webfont.sizes|googleencode }});
-    {% else %}
+    {% endif %}
+  {% endfor %}
+{% endblock %}
+{% block head-css-fontblocks %}
+  {# FIXME: webfonts #}
+  {% for webfont in webfonts.values %}
+    {% if not webfont.google %}
       @font-face {
         font-family: '{{ webfont.name|cssescape }}';
         src:
