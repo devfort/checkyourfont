@@ -1,6 +1,55 @@
 {% extends "cape_shell.html" %}
 {% load staticfiles %}
 
+{% block head-css %}
+<style>
+  body {
+    color: black;
+    background: white;
+    font-family: Helmet, Freesans, sans-serif;
+    line-height: 1.4;
+  }
+  
+  #preview {
+    margin: 0 20px;
+    padding: 0;
+  }
+  #preview em {
+    color: red;
+    display: block;
+    float: left;
+    font: 12px normal Helmet, Freesans, sans-serif;
+    line-height: 1;
+    margin: -1px 0 0 -60px;
+    min-width: 30px;
+    padding: 3px;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  #preview b {
+    position: absolute;
+    left: -999em;
+  }
+  #preview li {
+    background: #f8f8f8;
+    border-bottom: 1px solid red;
+    line-height: 2;
+    list-style: none;
+    margin: 0;
+    min-height: 20px;
+    padding: 0 0 0 60px;
+    vertical-align: baseline;
+    white-space: nowrap;
+  }
+  #preview li.key em {
+    background: red;
+    color: white;
+  }
+  
+  {% block font-head-css %}{% endblock %}
+</style>
+{% endblock %}
+
 {% block body-sheath %}
   <div class='content'>
     {% block content %}{% endblock %}

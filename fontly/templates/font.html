@@ -2,39 +2,27 @@
 
 {% block title %}Displaying {{ font }}{% endblock %}
 
-{% block head-css %}
-<style>
-{# FIXME: webfonts #}
-{% for webfont in webfonts.values %}
-@font-face {
-  font-family: {{ webfont.name }};
-  src:
-{% for source in webfont.sources %}
-url('{{ source.url }}') format('{{ source.format }}'){% if forloop.last %};{% else %},{% endif %}
-{% endfor %}
-}
-{{ webfont.css }}
-{% endfor %}
-body {
-  font-family: {{ font }};
-}
-ol {
-  margin: 0;
-  padding: 0;
-}
-li {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-.key { font-weight: bold; }
-</style>
+{% block font-head-css %}
+  {# FIXME: webfonts #}
+  {% for webfont in webfonts.values %}
+  @font-face {
+    font-family: {{ webfont.name }};
+    src:
+  {% for source in webfont.sources %}
+  url('{{ source.url }}') format('{{ source.format }}'){% if forloop.last %};{% else %},{% endif %}
+  {% endfor %}
+  }
+  {{ webfont.css }}
+  {% endfor %}
+  #preview {
+    font-family: {{font}};
+  }
 {% endblock %}
 
 {% block content %}
   <h1>{{ font }}</h1>
 
-  <ol>
+  <ol id='preview'>
     {% for size in sizes reversed %}
       <li{% if size.is_key %} class='key'{% endif %} style='font-size: {{ size.pixels }}px'><em>{{ size.pixels }}px<i> looks like </i></em>{% if text %}{{ text|linebreaks }}{% else %}AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890.,;()&pound;&amp;&sect;&ldquo;&rdquo;&lsquo;&rsquo;?!{% endif %}</li>
     {% endfor %}
