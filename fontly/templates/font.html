@@ -1,21 +1,21 @@
 {% extends "base.html" %}
+{% load csshelpers %}
 
 {% block title %}Displaying {{ font }}{% endblock %}
 
 {% block font-head-css %}
   {# FIXME: webfonts #}
   {% for webfont in webfonts.values %}
-  @font-face {
-    font-family: {{ webfont.name }};
-    src:
-  {% for source in webfont.sources %}
-  url('{{ source.url }}') format('{{ source.format }}'){% if forloop.last %};{% else %},{% endif %}
-  {% endfor %}
-  }
-  {{ webfont.css }}
+    @font-face {
+      font-family: '{{ webfont.name|cssescape }}';
+      src:
+        {% for source in webfont.sources %}
+          url('{{ source.url|cssescape }}') format('{{ source.format|cssescape }}'){% if forloop.last %};{% else %},{% endif %}
+        {% endfor %}
+    }
   {% endfor %}
   #preview {
-    font-family: {{font}};
+    font-family: '{{font|cssescape}}';
   }
 {% endblock %}
 

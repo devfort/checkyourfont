@@ -25,9 +25,9 @@ class Font(TemplateView):
 
         def param_(kv):
             bits = kv.split('=', 2)
-            ret = [ bits[0] ]
+            ret = [ bits[0].replace('+', ' ') ]
             if len(bits) > 1:
-                ret.append(bits[1])
+                ret.append(bits[1].replace('+', ' '))
             else:
                 ret.append(True)
             return ret
@@ -47,7 +47,7 @@ class Font(TemplateView):
                 ]
 
         bits = self.kwargs['params'].split(';')
-        font, params = bits[0], bits[1:]
+        font, params = bits[0].replace('+', ' '), bits[1:]
         kwargs['font'] = font
         kwargs['webfonts'] = {}
         sizes = None
