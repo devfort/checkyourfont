@@ -8,9 +8,7 @@
   body {
     color: black;
     background: #f8f8f8;
-    max-width: 680px;
-    text-align: center;
-    margin: 0 auto;
+    margin-left: 40px;
     font-size: 18px;
     line-height: 1.6;
   }
@@ -67,6 +65,9 @@
     color: white;
   }
   
+  .home ol, .home p, .home dl {
+    max-width: 580px;
+  }
   .home li {
     list-style: inside square;
     font-size: 0.66666em;
@@ -92,14 +93,6 @@
     margin-top: 4em;
     margin-bottom: 4em;
   }
-  footer span {
-    display: block;
-    width: 200px;
-    height: 6px;
-    border-top: 1px solid #afafaf;
-    border-bottom: 1px solid #afafaf;
-    margin: 0 auto 4em;
-  }
   
   #preview {
     text-align: left;
@@ -110,6 +103,7 @@
     border-bottom: 1px solid #ffb0b0;
     padding: 20px 0 20px 80px;
     position: relative;
+    overflow: hidden;
   }
   #preview em {
     text-align: center;
@@ -125,6 +119,9 @@
   }
   #preview .key em {
     background: #ff6066;
+  }
+  #preview span {
+    white-space: nowrap;
   }
   
   {% block head-css-fontblocks %}{% endblock %}

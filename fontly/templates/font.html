@@ -23,20 +23,20 @@
       }
     {% endif %}
   {% endfor %}
-  #preview {
+  #preview, h2 {
     font-family: '{{font|cssescape}}';
   }
 {% endblock %}
 
 {% block content %}
-  <h1><a href='/'>Ch<span>eck Your Fo</span>nt</a></h1>
+  <h1><span><a href='/'>Check Your Font</a></span></h1>
   <!-- Check your font before you wreck your font -->
   
   <h2><b>Looking at</b> {{ font }}</h2>
 
   <ol id='preview'>
     {% for size in sizes reversed %}
-      <li{% if size.is_key %} class='key'{% endif %} style='font-size: {{ size.pixels }}px'><em>{{ size.pixels }}px<b> looks like </b></em>{% if text %}{{ text|linebreaks }}{% else %}Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz 1234567890 . () , &ldquo;&pound;&rdquo; &amp; &lsquo;$&rsquo; &sect; ; ? !{% endif %}</li>
+      <li{% if size.is_key %} class='key'{% endif %} style='font-size: {{ size.pixels }}px'><em>{{ size.pixels }}px<b> looks like </b></em>{% if text %}{{ text|linebreaks }}{% else %}<span>AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890.(),&ldquo;&pound;&rdquo;&amp;&lsquo;$&rsquo;&sect;;?!</span>{% endif %}</li>
     {% endfor %}
   </ol>
 {% endblock %}
